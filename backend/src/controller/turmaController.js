@@ -1,6 +1,5 @@
-import {listar, inserir, alterar, remover, findByYear, findByCourseAndYear } from '../repository/turma.repository.js'
-
-import { Router } from 'express'
+import  {listar, inserir, alterar, remover, findByYear, findByCourseAndYear} from "../repository/turmaRepository.js";
+import { Router } from "express";
 const endpoints = Router();
 
 
@@ -59,3 +58,4 @@ endpoints.get('/turma/:ano/curso', async (req, resp) => {
 
 
 export default endpoints;
+

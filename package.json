@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/server.js"
+    "start": "concurrently \"npm run start --prefix backend\" \"npm run start --prefix frontend\"",
+    "start:frontend": "cd frontend && npm start",
+    "start:backend": "cd backend && nodemon ./src/server.js"
   },
   "keywords": [],
   "type": "module",
@@ -16,6 +18,10 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mysql2": "^3.13.0",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "react-router-dom": "^7.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }
