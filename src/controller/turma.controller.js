@@ -1,4 +1,4 @@
-import {listar, inserir, alterar, remover} from '../repository/turma.repository.js'
+import {listar, inserir, alterar, remover, findByYear } from '../repository/turma.repository.js'
 
 import { Router } from 'express'
 const endpoints = Router();
@@ -39,6 +39,14 @@ endpoints.delete('/turma/:id', async (req, resp) => {
 
   resp.send({ linhasAfetadas })
 })
+
+
+endpoints.get('/turma/busca/ano', async (req, resp) => {
+  let ano = req.query.ano;
+  let turmas = await findByYear(ano);
+
+  resp.send(turmas);
+});
 
 
 
