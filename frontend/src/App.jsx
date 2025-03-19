@@ -1,11 +1,13 @@
-import './App.css';
-import Turma from './components/turma';
+import Navbar from "./components/Navbar";
+
 
 function App() {
   return (
-   <div>
-    <Turma/>
-   </div>
+   <> 
+    <Navbar/>
+
+   </>
+   
   );
 }
 
