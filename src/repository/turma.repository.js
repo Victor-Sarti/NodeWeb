@@ -56,8 +56,23 @@ export async function remover(id) {
                                 bt_ativo as bt,
                                 dt_inclusao as inclusao
                          FROM tb_turma 
-                         WHERE nr_ano_letivo = ?`;
+                         WHERE YEAR(dt_inclusao) = ?`;
     
         let [resp] = await connection.query(comando, [ano]);
-        return resp; // Retorna todas as turmas que correspondem ao ano letivo
-    }
+        return resp;
+}
+
+export async function findByCourseAndYear(year, course){
+    const comando = `SELECT id_turma as id,
+                                nm_turma as nm_turma,
+                                ds_curso as ds,
+                                nr_ano_letivo as letivo,
+                                qtd_capacidade as capacidade,
+                                bt_ativo as bt,
+                                dt_inclusao as inclusao
+                         FROM tb_turma 
+                         WHERE ds_curso = ? AND YEAR(dt_inclusao) = ?`;
+
+    let resp = await connection.query(comando, [course, year]);
+    return resp;
+}

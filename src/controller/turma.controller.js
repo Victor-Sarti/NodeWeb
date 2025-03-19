@@ -1,4 +1,4 @@
-import {listar, inserir, alterar, remover, findByYear } from '../repository/turma.repository.js'
+import {listar, inserir, alterar, remover, findByYear, findByCourseAndYear } from '../repository/turma.repository.js'
 
 import { Router } from 'express'
 const endpoints = Router();
@@ -48,7 +48,14 @@ endpoints.get('/turma/busca/ano', async (req, resp) => {
   resp.send(turmas);
 });
 
+endpoints.get('/turma/:ano/curso', async (req, resp) => {
+  let curso = req.query.curso;
+  let ano = req.params.ano;
 
+  let turmas = await findByCourseAndYear(ano, curso);
+
+  resp.send(turmas);
+});
 
 
 export default endpoints;
